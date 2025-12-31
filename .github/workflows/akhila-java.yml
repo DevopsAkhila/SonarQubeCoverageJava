@@ -20,9 +20,9 @@ jobs:
           java-version: '21'
           distribution: 'oracle'
       - name: Setup maven
-        uses: actions/setup-maven@v4
+        uses: s4u/setup-maven-action@v1.19.0
         with:
-          maven-version: '3.8.4'
+          maven-version: '3.9.11'
       - name: Package application
         run: mvn package
       - name: Run tests with maven
