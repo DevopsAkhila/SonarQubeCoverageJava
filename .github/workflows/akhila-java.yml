@@ -24,14 +24,7 @@ jobs:
           with:
             maven-version: '3.8.4'
       - name:  Package application
-        run: mvn package
-      - name: Run tests with maven
-        run: mvn test
-      - name: Build with maven
-        run: mvn clean install     
-      - name: Archive test reports
-        uses: actions/upload-artifact@v3
-          with:
-            name: test-reports
-            path: target/surefire-reports 
+        run: mvn clean package
+  
+     
      
