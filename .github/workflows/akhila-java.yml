@@ -16,15 +16,22 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup jdk
         uses: actions/setup-java@v4
-          with:
-            java-version: '21'
-            distribution: 'oracle'
+        with:
+          java-version: '21'
+          distribution: 'oracle'
       - name: Setup maven
         uses: actions/setup-maven@v4
-          with:
-            maven-version: '3.8.4'
-      - name:  Package application
-        run: mvn clean package
-  
-     
+        with:
+          maven-version: '3.8.4'
+      - name: Package application
+        run: mvn package
+      - name: Run tests with maven
+        run: mvn test
+      - name: Build with maven
+        run: mvn clean install     
+      - name: Archive test reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: target/surefire-reports 
      
